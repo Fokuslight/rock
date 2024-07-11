@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
             'password' => $user['password']
         ]);
 
-        $user->profile()->create();
 
         $this->call([
             CategorySeeder::class,

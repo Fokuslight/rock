@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Observers\PostObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  *
@@ -38,9 +41,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @mixin \Eloquent
  */
+#[ObservedBy(PostObserver::class)]
 class Post extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     public function profile()
     {
